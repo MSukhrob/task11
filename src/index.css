@@ -4,55 +4,115 @@
 
 body {
   margin: 0;
-  padding: 32px 16px;
+  min-height: 100vh;
+  padding: 40px 16px 60px;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
+  color: #0f172a;
+  background:
+    radial-gradient(520px 320px at 90% -5%, rgba(6, 182, 212, 0.2), transparent 70%),
+    radial-gradient(520px 320px at -5% 10%, rgba(26, 86, 219, 0.16), transparent 70%),
+    #f4f7fe;
+  background-attachment: fixed;
 }
 
 h1 {
   text-align: center;
-  margin: 0 0 28px;
+  margin: 0 0 32px;
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #1a56db, #06b6d4, #1a56db);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeUp 0.7s ease both, shimmer 4s linear infinite;
 }
 
 .directory {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
 }
 
 .profile-card {
+  position: relative;
+  overflow: hidden;
   background-color: #ffffff;
-  border: 2px solid #1a56db;
-  border-radius: 12px;
-  padding: 18px 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid #dbe3f3;
+  border-radius: 16px;
+  padding: 22px 22px 18px;
+  animation: fadeUp 0.7s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.profile-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, #1a56db, #06b6d4);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .profile-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 22px rgba(30, 41, 59, 0.15);
+  transform: translateY(-8px) rotate(-0.6deg);
+  border-color: #1a56db;
+  box-shadow: 0 18px 34px rgba(26, 86, 219, 0.22);
+}
+
+.profile-card:hover::before {
+  transform: scaleX(1);
 }
 
 .card-header {
-  border-bottom: 1px solid #cbd5e1;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #dbe3f3;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .student-name {
-  margin: 0 0 4px;
-  font-size: 1.2rem;
+  margin: 0 0 6px;
+  font-size: 1.35rem;
 }
 
 .student-id {
-  color: #1a56db;
-  font-weight: 600;
-  font-size: 0.9rem;
+  display: inline-block;
+  background-color: #e8eefc;
+  color: #1e429f;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 3px 12px;
+  border-radius: 999px;
 }
 
 .card-body p {
-  margin: 6px 0;
+  margin: 8px 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
