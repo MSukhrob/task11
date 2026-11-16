@@ -10,21 +10,21 @@ function App() {
           studentId="202537508"
           major="Computer Science"
           year="2nd year"
-          gpa="3.8"
+          gpa="4.3"
         />
         <StudentProfileCard
           name="Muso"
           studentId="202537265"
           major="Computer Science"
           year="2nd year"
-          gpa="3.7"
+          gpa="4.3"
         />
         <StudentProfileCard
           name="Jasurbek"
           studentId="202537234"
           major="Computer Science"
           year="2nd year"
-          gpa="3.6"
+          gpa="4.0"
         />
       </div>
     </main>
